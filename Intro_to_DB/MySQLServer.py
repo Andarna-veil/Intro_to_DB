@@ -11,13 +11,12 @@ try:
     # Connect to MySQL server
     connection = mysql.connector.connect(
         host='localhost',
-        user='root',          # change this if needed
-        password='Signature2005_'  # replace with your real password
+        user='root',          # change if needed
+        password='your_password_here'  # replace with your real password
     )
 
     if connection.is_connected():
         cursor = connection.cursor()
-        # Create database if it doesn’t exist
         cursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store;")
         print("Database 'alx_book_store' created successfully!")
 
@@ -25,7 +24,5 @@ except mysql.connector.Error as err:
     print(f"Error: {err}")
 
 finally:
-    # Close the connection properly
     if 'connection' in locals() and connection.is_connected():
-        cursor.close()
         connection.close()
